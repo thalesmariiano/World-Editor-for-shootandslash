@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="static/images/sas_icon.png"/>
+	<title>World Editor</title>
+
+  	<script src="https://cdn.tailwindcss.com"></script>
+  	<script>
+	    tailwind.config = {
+	    	theme: {
+	        	extend: {
+	        		boxShadow: {
+	        			'aside-left': '-3px 0px 5px rgba(0,0,0,.3)',
+	        			'shortcut': '3px -3px 5px rgba(0,0,0,.3)',
+	        		}
+	        	}
+	      	}
+	    }
+ 	</script>
+
+</head>
+<body class="bg-neutral-700 overflow-hidden">
+	<aside class="fixed top-0 right-0 w-16 h-screen bg-neutral-900 border-l-2 border-black shadow-aside-left">
+		<div class="w-full h-full flex flex-col justify-between items-center py-2">
+			<div class="flex flex-col items-center gap-y-2">
+				<button onclick="editor.switchMode('addTile')" class="p-2 bg-green-800 hover:bg-green-950 rounded">
+					<img class="w-7" src="static/images/add-icon.svg" alt="add icon">
+				</button>
+				<button onclick="editor.switchMode('removeTile')" class="p-2 bg-red-800 hover:bg-red-950 rounded">
+					<img class="w-7" src="static/images/remove-icon.svg" alt="remove icon">
+				</button>
+				<button onClick="editor.moveMap()" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
+					<img class="w-7" src="static/images/move-icon.svg" alt="move icon">
+				</button>
+				<button id="open-tilemap" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
+					<img class="w-7" src="static/images/menu-icon.svg" alt="menu icon">
+				</button>
+			</div>
+			<div class="flex flex-col items-center gap-y-2">
+				<button id="save-map" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+					<img class="w-7" src="static/images/save-icon.svg" alt="save icon">
+				</button>
+				<button id="open-options" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+					<img class="w-7" src="static/images/options-icon.svg" alt="options icon">
+				</button>
+				<button id="delete-map" class="p-2 bg-red-800 hover:bg-red-950 rounded">
+					<img class="w-7" src="static/images/delete-icon.svg" alt="delete icon">
+				</button>
+				<button class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+					<img class="w-7" src="static/images/help-icon.svg" alt="help icon">
+				</button>
+			</div>
+		</div>
+	</aside>
+
+	<div class="fixed bottom-0 left-0 h-16 bg-neutral-900 rounded-r shadow-shortcut">
+		<div class="w-full h-full flex items-center gap-x-2 px-2">
+			<button onClick="editor.switchTexture(0,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_1.png" alt="tile left side icon">
+			</button>
+			<button onClick="editor.switchTexture(32,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_2.png" alt="tile middle icon">
+			</button>
+			<button onClick="editor.switchTexture(64,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_3.png" alt="tile right side icon">
+			</button>
+			<button onClick="editor.switchTexture(0,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_4.png" alt="tile right side icon">
+			</button>
+			<button onClick="editor.switchTexture(32,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_5.png" alt="tile right side icon">
+			</button>
+			<button onClick="editor.switchTexture(64,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_6.png" alt="tile right side icon">
+			</button>
+			<button onClick="editor.switchTexture(0,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_7.png" alt="tile right side icon">
+			</button>
+			<button onClick="editor.switchTexture(32,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_8.png" alt="tile right side icon">
+			</button>
+			<button onClick="editor.switchTexture(64,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+				<img class="w-10" src="static/images/tile_9.png" alt="tile right side icon">
+			</button>
+		</div>
+	</div>
+
+	<div id="delete-map-modal" class="w-full h-full fixed top-0 left-0 bg-neutral-900/70 flex justify-center items-center hidden">
+		<div class="w-96 h-44 flex flex-col justify-between items-start p-2 bg-neutral-400 border border-white rounded">
+			<div>
+				<p class="font-bold text-black text-xl uppercase">Apagar mapa</p>
+				<p class="ml-1 mt-1">Tem certeza? Isso deletará todo o seu projeto de mapa.</p>
+			</div>
+			<div>
+				<button id="cancel-delete-map" class="px-5 py-1 text-white bg-green-700 hover:bg-green-800 font-semibold uppercase rounded">Cancelar</button>
+				<button id="confirm-delete-map" class="px-5 py-1 text-white bg-red-700 hover:bg-red-800 font-semibold uppercase rounded">Deletar</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="tilemap-menu" class="w-full h-full fixed top-0 left-0 flex flex-col gap-1 justify-center items-center bg-neutral-900/50 hidden">
+		<button id="close-tilemap" class="uppercase text-white font-bold px-5 py-1 bg-neutral-800 rounded hover:bg-neutral-900">Fechar</button>
+		<canvas id="tilemap-display" class="border border-white mt-5 bg-neutral-900 rounded"></canvas>
+	</div>
+
+	<div id="options-modal" class="w-full h-full fixed top-0 left-0 bg-neutral-900/70 flex justify-center items-center hidden">
+		<div class="w-96 h-3/4 flex flex-col justify-start items-start p-2 bg-neutral-400 border border-white rounded">
+			<div class="w-full flex items-center justify-between">
+				<h1 class="font-bold text-black text-2xl uppercase">Opções</h1>
+				<button id="close-options"><img class="w-6" src="static/images/x-icon.svg"></button>
+			</div>
+			<div class="w-full h-full mt-3 px-3">
+
+				<label class="group w-full text-lg font-semibold flex justify-between items-center my-3">
+					Substituir tile já colocado
+					<input class="w-0 h-0" type="checkbox">
+					<div class="min-w-16 h-5 bg-neutral-600 rounded relative flex items-center">
+						<span class="absolute left-0 w-8 h-5 bg-red-700 group-has-[:checked]:bg-green-700 group-has-[:checked]:left-8 rounded transition-all"></span>
+					</div>
+				</label>
+
+				<label class="group w-full text-lg font-semibold flex justify-between items-center my-3">
+					Adição continua de blocos ao segurar clique
+					<input class="w-0 h-0" type="checkbox">
+					<div class="min-w-16 h-5 bg-neutral-600 rounded relative flex items-center">
+						<span class="absolute left-0 w-8 h-5 bg-red-700 group-has-[:checked]:bg-green-700 group-has-[:checked]:left-8 rounded transition-all"></span>
+					</div>
+				</label>
+
+				<label class="group w-full text-lg font-semibold flex justify-between items-center my-3">
+					Opção muitcho loka 2
+					<input class="w-0 h-0" type="checkbox">
+					<div class="min-w-16 h-5 bg-neutral-600 rounded relative flex items-center">
+						<span class="absolute left-0 w-8 h-5 bg-red-700 group-has-[:checked]:bg-green-700 group-has-[:checked]:left-8 rounded transition-all"></span>
+					</div>
+				</label>
+
+
+			</div>
+		</div>
+	</div>
+
+	<canvas id="editor-display"></canvas>
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<script src="static/js/utils.js"></script>
+	<script src="static/js/mapEditor.js"></script>
+	<script src="static/js/textureSelector.js"></script>
+	<script src="static/js/main.js"></script>
+</body>
+</html>
