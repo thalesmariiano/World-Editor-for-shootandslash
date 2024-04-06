@@ -3,6 +3,13 @@
 I created this map editor for make the shoot and slash development more easy. But, i like too much this.
 -
 
+For run the project:
+```
+npm install
+npm run server
+```
+- localhost:3072 
+
 After save the map, you will receive a json file with a tileset array like that:
 
 > (but, not formated like that)
