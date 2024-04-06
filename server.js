@@ -22,12 +22,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 	if(req.body.tileMap.length){
-		const date = new Date()
-		const hours = date.getHours()
-		const minutes = date.getMinutes()
-		const seconds = date.getSeconds()
-
-		const fileName = `tileMap_${hours}h_${minutes}m_${seconds}s`
+		const fileName = req.body.map_name
 		const fileContent = JSON.stringify(req.body.tileMap)
 		const filePath = `tiles/${fileName}.json`
 

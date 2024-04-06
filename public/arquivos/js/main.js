@@ -39,6 +39,7 @@ closeOptions.addEventListener('click', () => {
 	optionsModal.classList.add('hidden')
 })
 
+
 const editor = mapEditor('#editor-display', 'static/images/tilemap.png')
 editor.init()	
 
@@ -46,10 +47,23 @@ const selector = textureSelector('#tilemap-display', 'static/images/tilemap.png'
 selector.init()
 
 
+const saveMapModal = document.querySelector('#save-map-modal')
+const mapNameInput = document.querySelector('#map-name-input')
 const saveMap = document.querySelector('#save-map')
+const confirmSaveMap = document.querySelector('#confirm-save-map')
+const cancelSaveMap = document.querySelector('#cancel-save-map')
 
 saveMap.addEventListener('click', () => {
+	saveMapModal.classList.remove('hidden')
+	mapNameInput.placeholder = `tileMap${Math.floor(Math.random() * 1000)}`
+})
+
+confirmSaveMap.addEventListener('click', () => {
+	saveMapModal.classList.add('hidden')
+	const mapName = mapNameInput.value ? mapNameInput.value : mapNameInput.placeholder
+
 	const data = {
+		map_name: mapName,
 		tileMap: editor.tiles
 	}
 	axios.post('http://localhost:3072/', data)
@@ -61,5 +75,9 @@ saveMap.addEventListener('click', () => {
 		console.log(err.response.status)
 		console.log(err.response.data)
 	})
+})
+
+cancelSaveMap.addEventListener('click', () => {
+	saveMapModal.classList.add('hidden')
 })
 
