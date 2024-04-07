@@ -63,6 +63,16 @@ function mapEditor(canvasId, image){
 		handlers[click_mode](e)
 	}
 
+	function mouseDownHandler(e){
+		moveMouseTrigger = true
+		startX = e.clientX - transX
+		startY = e.clientY - transY
+	}
+
+	function mouseUpHandler(e){
+		moveMouseTrigger = false
+	}
+
 	function addTile(e){
 		const tileX = getPointerX(e)
 		const tileY = getPointerY(e)
@@ -175,14 +185,8 @@ function mapEditor(canvasId, image){
 	function init(){
 		canvas.addEventListener('click', clickHandler)
 		canvas.addEventListener('mousemove', movePointer)
-
-		canvas.addEventListener('mousedown', (e) =>{
-			moveMouseTrigger = true
-			startX = e.clientX - transX
-			startY = e.clientY - transY
-		})
-
-		canvas.addEventListener('mouseup', () => moveMouseTrigger = false)
+		canvas.addEventListener('mousedown', mouseDownHandler)
+		canvas.addEventListener('mouseup', mouseUpHandler)
 
 		render()
 	}
