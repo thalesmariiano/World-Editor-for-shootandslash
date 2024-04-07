@@ -92,10 +92,14 @@ function mapEditor(canvasId, image){
 		   tileY < 0
 		) return
 
-		// if already has a tile, return
-		const hasTile = tiles.find(tile => tileX == tile.position.x && tileY == tile.position.y)
-		if(hasTile) return
 
+		// replace a existing tile for another or not
+		const tileIndex = tiles.findIndex(tile => tileX == tile.position.x && tileY == tile.position.y)
+		if(parseInt(localStorage.getItem('replaceTile'))){
+			if(tileIndex !== -1) tiles.splice(tileIndex, 1)			
+		}else return
+
+		
 		// push tile object on array
 		tiles.push({
 			width: 50,

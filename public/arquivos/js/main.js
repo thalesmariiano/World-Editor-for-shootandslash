@@ -83,7 +83,6 @@ cancelSaveMap.addEventListener('click', () => {
 
 
 const continuousTilePlacement = document.querySelector('#continuous-tile-placement')
-
 continuousTilePlacement.addEventListener('click', () => {
 	if(continuousTilePlacement.checked){
 		localStorage.setItem('tilePlacement', '1')
@@ -96,4 +95,15 @@ if(parseInt(localStorage.getItem('tilePlacement'))){
 	continuousTilePlacement.checked = true
 }
 
+const replaceTile = document.querySelector('#replace-tile')
+replaceTile.addEventListener('click', () => {
+	if(replaceTile.checked){
+		localStorage.setItem('replaceTile', '1')
+	}else{
+		localStorage.setItem('replaceTile', '0')
+	}
+})
 
+if(parseInt(localStorage.getItem('replaceTile'))){
+	replaceTile.checked = true
+}
