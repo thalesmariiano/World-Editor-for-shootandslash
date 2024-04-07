@@ -95,9 +95,9 @@ function mapEditor(canvasId, image){
 
 		// replace a existing tile for another or not
 		const tileIndex = tiles.findIndex(tile => tileX == tile.position.x && tileY == tile.position.y)
-		if(parseInt(localStorage.getItem('replaceTile'))){
-			if(tileIndex !== -1) tiles.splice(tileIndex, 1)			
-		}else return
+		if(parseInt(localStorage.getItem('replaceTile')) && tileIndex !== -1){
+			if(tileIndex !== -1) tiles.splice(tileIndex, 1)	
+		}else if(tileIndex !== -1) return
 
 		
 		// push tile object on array
