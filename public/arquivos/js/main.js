@@ -81,3 +81,19 @@ cancelSaveMap.addEventListener('click', () => {
 	saveMapModal.classList.add('hidden')
 })
 
+
+const continuousTilePlacement = document.querySelector('#continuous-tile-placement')
+
+continuousTilePlacement.addEventListener('click', () => {
+	if(continuousTilePlacement.checked){
+		localStorage.setItem('tilePlacement', '1')
+	}else{
+		localStorage.setItem('tilePlacement', '0')
+	}
+})
+
+if(parseInt(localStorage.getItem('tilePlacement'))){
+	continuousTilePlacement.checked = true
+}
+
+

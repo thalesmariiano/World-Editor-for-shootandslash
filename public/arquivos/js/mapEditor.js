@@ -52,6 +52,14 @@ function mapEditor(canvasId, image){
 			transX = e.clientX - startX
 			transY = e.clientY - startY
 		}
+
+		// continuous tile placement
+		if(parseInt(localStorage.getItem('tilePlacement'))){
+			if(click_mode == 'addTile' && moveMouseTrigger){
+				addTile(e)
+			}
+		}
+		
 	}
 
 	function clickHandler(e){
