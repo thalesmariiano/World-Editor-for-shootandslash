@@ -54,6 +54,8 @@ const saveMap = document.querySelector('#save-map')
 const confirmSaveMap = document.querySelector('#confirm-save-map')
 const cancelSaveMap = document.querySelector('#cancel-save-map')
 
+const savingMap = document.querySelector('#saving-map')
+
 saveMap.addEventListener('click', () => {
 	saveMapModal.classList.remove('hidden')
 	mapName.placeholder = `tileMap${Math.floor(Math.random() * 1000)}`
@@ -61,6 +63,7 @@ saveMap.addEventListener('click', () => {
 
 confirmSaveMap.addEventListener('click', () => {
 	saveMapModal.classList.add('hidden')
+	savingMap.classList.remove('hidden')
 
 	const data = {
 		map_name: mapName.value ? mapName.value : mapName.placeholder,
@@ -72,10 +75,12 @@ confirmSaveMap.addEventListener('click', () => {
 	.then(response => {
 		console.log(response.status)
 		console.log(response.data)
+		savingMap.classList.add('hidden')
 	})
 	.catch(err => {
 		console.log(err.response.status)
 		console.log(err.response.data)
+		savingMap.classList.add('hidden')
 	})
 })
 

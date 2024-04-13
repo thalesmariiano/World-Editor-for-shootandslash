@@ -20,6 +20,17 @@
 	    }
  	</script>
 
+ 	<style>
+ 		.loading-progress {
+ 			width: 35px;
+ 			height: 35px;
+ 			border: 5px solid rgba(0, 229, 255, 0.5);;
+ 			border-right: 5px solid rgba(0, 229, 255, 1);
+ 			border-bottom: 5px solid rgba(0, 229, 255, 1);
+ 			border-radius: 100%;
+ 		}
+ 	</style>
+
 </head>
 <body class="bg-neutral-700 overflow-hidden">
 	<aside class="fixed top-0 right-0 w-16 h-screen bg-neutral-900 border-l-2 border-black shadow-aside-left">
@@ -156,6 +167,13 @@
 					</div>
 				</label>
 			</div>
+		</div>
+	</div>
+
+	<div id="saving-map" class="w-full h-full fixed top-0 left-0 bg-neutral-900/70 flex justify-center items-center hidden">
+		<div class="w-96 h-20 flex gap-x-5 justify-center items-center p-2 bg-neutral-400 border border-white rounded">
+			<div class="loading-progress animate-spin"></div>
+			<p class="font-bold text-xl uppercase text-neutral-800">Salvando...</p>
 		</div>
 	</div>
 
