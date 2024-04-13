@@ -48,24 +48,26 @@ selector.init()
 
 
 const saveMapModal = document.querySelector('#save-map-modal')
-const mapNameInput = document.querySelector('#map-name-input')
+const mapName = document.querySelector('#map-name')
+const fileExtension = document.querySelector('#file-extension')
 const saveMap = document.querySelector('#save-map')
 const confirmSaveMap = document.querySelector('#confirm-save-map')
 const cancelSaveMap = document.querySelector('#cancel-save-map')
 
 saveMap.addEventListener('click', () => {
 	saveMapModal.classList.remove('hidden')
-	mapNameInput.placeholder = `tileMap${Math.floor(Math.random() * 1000)}`
+	mapName.placeholder = `tileMap${Math.floor(Math.random() * 1000)}`
 })
 
 confirmSaveMap.addEventListener('click', () => {
 	saveMapModal.classList.add('hidden')
-	const mapName = mapNameInput.value ? mapNameInput.value : mapNameInput.placeholder
 
 	const data = {
-		map_name: mapName,
+		map_name: mapName.value ? mapName.value : mapName.placeholder,
+		file_extension: fileExtension.value,
 		tileMap: editor.tiles
 	}
+
 	axios.post('http://localhost:3072/', data)
 	.then(response => {
 		console.log(response.status)

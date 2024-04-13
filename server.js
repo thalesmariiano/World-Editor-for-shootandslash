@@ -24,14 +24,15 @@ app.post('/', (req, res) => {
 	if(req.body.tileMap.length){
 		const fileName = req.body.map_name
 		const fileContent = JSON.stringify(req.body.tileMap)
-		const filePath = `tiles/${fileName}.json`
+		const fileExtension = req.body.file_extension
+		const filePath = `tiles/${fileName}.${fileExtension}`
 
 		fs.writeFile(filePath, fileContent, err => {
 			if(err) throw err
 			res.status(200).json({message: 'Mapa salvo com sucesso!'})
 		})
 	}else{
-		res.status(400).json({message: 'Você precisa fazer um mapa primeiro!'})
+		res.status(400).json({message: 'Você precisa fazer um mapa primeiro!'})		
 	}
 })
 
