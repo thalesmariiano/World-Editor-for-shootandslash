@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .loading-progress {
+        width: 35px;
+        height: 35px;
+        border: 5px solid rgba(0, 229, 255, 0.5);;
+        border-right: 5px solid rgba(0, 229, 255, 1);
+        border-bottom: 5px solid rgba(0, 229, 255, 1);
+        border-radius: 100%;
+    }
+}
