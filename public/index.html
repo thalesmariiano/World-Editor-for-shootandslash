@@ -69,34 +69,38 @@
 		</div>
 	</aside>
 
-	<div class="fixed bottom-0 left-0 h-16 bg-neutral-900 rounded-r shadow-shortcut">
+	<div class="fixed bottom-0 left-0 w-16 h-16 has-[:checked]:w-fit overflow-hidden flex items-center bg-neutral-900 rounded-r shadow-shortcut">
+		<label class="ml-1 relative cursor-pointer bg-neutral-950 rounded">
+			<input class="w-0 h-0 absolute" type="checkbox">
+			<img class="min-w-14 w-14" src="static/images/tiles_icon_128x.png" alt="tile left side icon">
+		</label>
 		<div class="w-full h-full flex items-center gap-x-2 px-2">
 			<button onClick="editor.switchTexture(0,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_1.png" alt="tile left side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_1.png" alt="tile left side icon">
 			</button>
 			<button onClick="editor.switchTexture(32,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_2.png" alt="tile middle icon">
+				<img class="min-w-10 w-10" src="static/images/tile_2.png" alt="tile middle icon">
 			</button>
 			<button onClick="editor.switchTexture(64,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_3.png" alt="tile right side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_3.png" alt="tile right side icon">
 			</button>
 			<button onClick="editor.switchTexture(0,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_4.png" alt="tile right side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_4.png" alt="tile right side icon">
 			</button>
 			<button onClick="editor.switchTexture(32,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_5.png" alt="tile right side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_5.png" alt="tile right side icon">
 			</button>
 			<button onClick="editor.switchTexture(64,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_6.png" alt="tile right side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_6.png" alt="tile right side icon">
 			</button>
 			<button onClick="editor.switchTexture(0,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_7.png" alt="tile right side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_7.png" alt="tile right side icon">
 			</button>
 			<button onClick="editor.switchTexture(32,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_8.png" alt="tile right side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_8.png" alt="tile right side icon">
 			</button>
 			<button onClick="editor.switchTexture(64,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
-				<img class="w-10" src="static/images/tile_9.png" alt="tile right side icon">
+				<img class="min-w-10 w-10" src="static/images/tile_9.png" alt="tile right side icon">
 			</button>
 		</div>
 	</div>
