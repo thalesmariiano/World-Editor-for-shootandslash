@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "build-css": "npx tailwindcss -i ./input.css -o ./public/arquivos/css/styles.css"
   },
   "author": "",
   "license": "ISC",
