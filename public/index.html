@@ -11,38 +11,71 @@
 
 </head>
 <body class="bg-neutral-700 overflow-hidden">
-	<aside class="fixed top-0 right-0 w-16 h-screen bg-neutral-900 border-l-2 border-black shadow-aside-left">
-		<div class="w-full h-full flex flex-col justify-between items-center py-2">
-			<div class="flex flex-col items-center gap-y-2">
-				<button onclick="editor.switchMode('addTile')" class="p-2 bg-green-800 hover:bg-green-950 rounded">
-					<img class="w-7" src="static/images/add-icon.svg" alt="add icon">
-				</button>
-				<button onclick="editor.switchMode('removeTile')" class="p-2 bg-red-800 hover:bg-red-950 rounded">
-					<img class="w-7" src="static/images/remove-icon.svg" alt="remove icon">
-				</button>
-				<button onClick="editor.moveMap()" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
-					<img class="w-7" src="static/images/move-icon.svg" alt="move icon">
-				</button>
-				<button id="open-tilemap" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
-					<img class="w-7" src="static/images/menu-icon.svg" alt="menu icon">
-				</button>
+	<aside class="fixed top-0 right-0 h-screen bg-neutral-900 border-l-2 border-black shadow-aside-left">
+		<div class="h-full flex">
+			<div id="options-modal" class="w-96 h-full bg-neutral-800 p-5 hidden transition-all overflow-hidden">
+				<div class="w-full flex items-center justify-between mb-5">
+					<h1 class="font-bold text-white text-2xl uppercase">Opções</h1>
+					<button id="close-options" class="cursor-pointer hover:bg-neutral-700 p-1 rounded-full transition-all">
+						<img class="w-5 invert" src="static/images/x-icon.svg">
+					</button>
+				</div>
+
+				<hr/>
+
+				<div class="mt-5">
+					<h2 class="font-semibold text-white uppercase">Map Editor</h2>
+					<div class="space-y-3 mt-2 ml-2">
+						<label class="group text-neutral-300 w-full font-semibold flex justify-between items-center cursor-pointer">
+							Substituir tile já colocado
+							<input id="replace-tile" class="w-0 h-0" type="checkbox">
+							<div class="min-w-12 h-4 bg-neutral-600 rounded relative flex items-center">
+								<span class="absolute left-0 w-6 h-4 bg-red-700 group-has-[:checked]:bg-green-700 group-has-[:checked]:left-6 rounded transition-all"></span>
+							</div>
+						</label>
+		
+						<label class="group text-neutral-300 w-full font-semibold flex justify-between items-center cursor-pointer">
+							Segurar mouse adiciona tiles
+							<input id="continuous-tile-placement" class="w-0 h-0" type="checkbox">
+							<div class="min-w-12 h-4 bg-neutral-600 rounded relative flex items-center">
+								<span class="absolute left-0 w-6 h-4 bg-red-700 group-has-[:checked]:bg-green-700 group-has-[:checked]:left-6 rounded transition-all"></span>
+							</div>
+						</label>
+					</div>
+				</div>
 			</div>
-			<div class="flex flex-col items-center gap-y-2">
-				<button id="save-map" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
-					<img class="w-7" src="static/images/save-icon.svg" alt="save icon">
-				</button>
-				<button id="open-folder" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
-					<img class="w-7" src="static/images/folder-icon.svg" alt="folder icon">
-				</button>
-				<button id="open-options" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
-					<img class="w-7" src="static/images/options-icon.svg" alt="options icon">
-				</button>
-				<button id="delete-map" class="p-2 bg-red-800 hover:bg-red-950 rounded">
-					<img class="w-7" src="static/images/delete-icon.svg" alt="delete icon">
-				</button>
-				<button class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
-					<img class="w-7" src="static/images/help-icon.svg" alt="help icon">
-				</button>
+			<div class="w-16 h-full flex flex-col justify-between items-center py-2">
+				<div class="flex flex-col items-center gap-y-2">
+					<button onclick="editor.switchMode('addTile')" class="p-2 bg-green-800 hover:bg-green-950 rounded">
+						<img class="w-7" src="static/images/add-icon.svg" alt="add icon">
+					</button>
+					<button onclick="editor.switchMode('removeTile')" class="p-2 bg-red-800 hover:bg-red-950 rounded">
+						<img class="w-7" src="static/images/remove-icon.svg" alt="remove icon">
+					</button>
+					<button onClick="editor.moveMap()" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
+						<img class="w-7" src="static/images/move-icon.svg" alt="move icon">
+					</button>
+					<button id="open-tilemap" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
+						<img class="w-7" src="static/images/menu-icon.svg" alt="menu icon">
+					</button>
+				</div>
+				<div class="flex flex-col items-center gap-y-2">
+					<button id="save-map" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+						<img class="w-7" src="static/images/save-icon.svg" alt="save icon">
+					</button>
+					<button id="open-folder" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+						<img class="w-7" src="static/images/folder-icon.svg" alt="folder icon">
+					</button>
+					<button id="open-options" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+						<img class="w-7" src="static/images/options-icon.svg" alt="options icon">
+					</button>
+					<button id="delete-map" class="p-2 bg-red-800 hover:bg-red-950 rounded">
+						<img class="w-7" src="static/images/delete-icon.svg" alt="delete icon">
+					</button>
+					<button class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+						<img class="w-7" src="static/images/help-icon.svg" alt="help icon">
+					</button>
+				</div>
 			</div>
 		</div>
 	</aside>
@@ -123,33 +156,6 @@
 	<div id="tilemap-menu" class="w-full h-full fixed top-0 left-0 flex flex-col gap-1 justify-center items-center bg-neutral-900/50 hidden">
 		<button id="close-tilemap" class="uppercase text-white font-bold px-5 py-1 bg-neutral-800 rounded hover:bg-neutral-900">Fechar</button>
 		<canvas id="tilemap-display" class="border border-white mt-5 bg-neutral-900 rounded"></canvas>
-	</div>
-
-	<div id="options-modal" class="w-full h-full fixed top-0 left-0 bg-neutral-900/70 flex justify-center items-center hidden">
-		<div class="w-96 h-3/4 flex flex-col justify-start items-start p-2 bg-neutral-400 border border-white rounded">
-			<div class="w-full flex items-center justify-between">
-				<h1 class="font-bold text-black text-2xl uppercase">Opções</h1>
-				<button id="close-options"><img class="w-6" src="static/images/x-icon.svg"></button>
-			</div>
-			<div class="w-full h-full mt-3 px-3">
-
-				<label class="group w-full text-lg font-semibold flex justify-between items-center my-3">
-					Substituir tile já colocado
-					<input id="replace-tile" class="w-0 h-0" type="checkbox">
-					<div class="min-w-16 h-5 bg-neutral-600 rounded relative flex items-center">
-						<span class="absolute left-0 w-8 h-5 bg-red-700 group-has-[:checked]:bg-green-700 group-has-[:checked]:left-8 rounded transition-all"></span>
-					</div>
-				</label>
-
-				<label class="group w-full text-lg font-semibold flex justify-between items-center my-3">
-					Segurar mouse adiciona tiles
-					<input id="continuous-tile-placement" class="w-0 h-0" type="checkbox">
-					<div class="min-w-16 h-5 bg-neutral-600 rounded relative flex items-center">
-						<span class="absolute left-0 w-8 h-5 bg-red-700 group-has-[:checked]:bg-green-700 group-has-[:checked]:left-8 rounded transition-all"></span>
-					</div>
-				</label>
-			</div>
-		</div>
 	</div>
 
 	<div id="saving-map" class="w-full h-full fixed top-0 left-0 bg-neutral-900/70 flex justify-center items-center hidden">
