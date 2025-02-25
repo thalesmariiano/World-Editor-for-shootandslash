@@ -27,6 +27,8 @@ app.post('/', (req, res) => {
 		const fileExtension = req.body.file_extension
 		const filePath = `tiles/${fileName}.${fileExtension}`
 
+		if(!fs.existsSync('tiles')) fs.mkdirSync('tiles')
+
 		fs.writeFile(filePath, fileContent, err => {
 			if(err) throw err
 			res.status(200).json({message: 'Mapa salvo com sucesso!'})
