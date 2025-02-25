@@ -39,5 +39,5 @@ app.post('/', (req, res) => {
 })
 
 app.listen(port, () => {
-	console.log('Server iniciado na porta: ' + port)
+	console.log(`Server iniciado: http://localhost:${port}`)
 })
