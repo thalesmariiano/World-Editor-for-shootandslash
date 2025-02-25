@@ -46,33 +46,33 @@
 			</div>
 			<div class="w-16 h-full flex flex-col justify-between items-center py-2">
 				<div class="flex flex-col items-center gap-y-2">
-					<button onclick="editor.switchMode('addTile')" class="p-2 bg-green-800 hover:bg-green-950 rounded">
+					<button onclick="editor.switchMode('addTile')" class="p-2 cursor-pointer bg-green-800 hover:bg-green-950 rounded">
 						<img class="w-7" src="static/images/add-icon.svg" alt="add icon">
 					</button>
-					<button onclick="editor.switchMode('removeTile')" class="p-2 bg-red-800 hover:bg-red-950 rounded">
+					<button onclick="editor.switchMode('removeTile')" class="p-2 cursor-pointer bg-red-800 hover:bg-red-950 rounded">
 						<img class="w-7" src="static/images/remove-icon.svg" alt="remove icon">
 					</button>
-					<button onClick="editor.moveMap()" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
+					<button onClick="editor.moveMap()" class="p-2 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 						<img class="w-7" src="static/images/move-icon.svg" alt="move icon">
 					</button>
-					<button id="open-tilemap" class="p-2 bg-neutral-800 hover:bg-neutral-950 rounded">
+					<button id="open-tilemap" class="p-2 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 						<img class="w-7" src="static/images/menu-icon.svg" alt="menu icon">
 					</button>
 				</div>
 				<div class="flex flex-col items-center gap-y-2">
-					<button id="save-map" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+					<button id="save-map" class="p-2 cursor-pointer bg-neutral-700 hover:bg-neutral-800 rounded">
 						<img class="w-7" src="static/images/save-icon.svg" alt="save icon">
 					</button>
-					<button id="open-folder" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+					<button id="open-folder" class="p-2 cursor-pointer bg-neutral-700 hover:bg-neutral-800 rounded">
 						<img class="w-7" src="static/images/folder-icon.svg" alt="folder icon">
 					</button>
-					<button id="open-options" class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+					<button id="open-options" class="p-2 cursor-pointer bg-neutral-700 hover:bg-neutral-800 rounded">
 						<img class="w-7" src="static/images/options-icon.svg" alt="options icon">
 					</button>
-					<button id="delete-map" class="p-2 bg-red-800 hover:bg-red-950 rounded">
+					<button id="delete-map" class="p-2 cursor-pointer bg-red-800 hover:bg-red-950 rounded">
 						<img class="w-7" src="static/images/delete-icon.svg" alt="delete icon">
 					</button>
-					<button class="p-2 bg-neutral-700 hover:bg-neutral-800 rounded">
+					<button class="p-2 cursor-pointer bg-neutral-700 hover:bg-neutral-800 rounded">
 						<img class="w-7" src="static/images/help-icon.svg" alt="help icon">
 					</button>
 				</div>
@@ -86,31 +86,31 @@
 			<img class="min-w-14 w-14" src="static/images/tiles_icon_128x.png" alt="tile left side icon">
 		</label>
 		<div class="w-full h-full flex items-center gap-x-2 px-2">
-			<button onClick="editor.switchTexture(0,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(0,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_1.png" alt="tile left side icon">
 			</button>
-			<button onClick="editor.switchTexture(32,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(32,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_2.png" alt="tile middle icon">
 			</button>
-			<button onClick="editor.switchTexture(64,0)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(64,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_3.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(0,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(0,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_4.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(32,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(32,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_5.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(64,32)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(64,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_6.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(0,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(0,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_7.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(32,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(32,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_8.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(64,64)" class="p-1 bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="editor.switchTexture(64,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_9.png" alt="tile right side icon">
 			</button>
 		</div>
@@ -133,8 +133,8 @@
 				<span class="text-xs font-semibold text-red-700/50 ml-1">Opcional</span>
 			</form>
 			<div class="space-x-2">
-				<button id="confirm-save-map" class="px-5 py-1 text-white bg-green-700 hover:bg-green-800 font-semibold uppercase rounded">Salvar</button>
-				<button id="cancel-save-map" class="px-5 py-1 text-white bg-red-700 hover:bg-red-800 font-semibold uppercase rounded">Cancelar</button>
+				<button id="confirm-save-map" class="px-5 py-1 cursor-pointer text-white bg-green-700 hover:bg-green-800 font-semibold uppercase rounded">Salvar</button>
+				<button id="cancel-save-map" class="px-5 py-1 cursor-pointer text-white bg-red-700 hover:bg-red-800 font-semibold uppercase rounded">Cancelar</button>
 			</div>
 		</div>
 	</div>
@@ -147,14 +147,14 @@
 				<p class="ml-1 mt-1">Tem certeza? Isso deletará todo o seu projeto de mapa.</p>
 			</div>
 			<div>
-				<button id="cancel-delete-map" class="px-5 py-1 text-white bg-green-700 hover:bg-green-800 font-semibold uppercase rounded">Cancelar</button>
-				<button id="confirm-delete-map" class="px-5 py-1 text-white bg-red-700 hover:bg-red-800 font-semibold uppercase rounded">Apagar</button>
+				<button id="cancel-delete-map" class="px-5 py-1 cursor-pointer text-white bg-green-700 hover:bg-green-800 font-semibold uppercase rounded">Cancelar</button>
+				<button id="confirm-delete-map" class="px-5 py-1 cursor-pointer text-white bg-red-700 hover:bg-red-800 font-semibold uppercase rounded">Apagar</button>
 			</div>
 		</div>
 	</div>
 
 	<div id="tilemap-menu" class="w-full h-full fixed top-0 left-0 flex flex-col gap-1 justify-center items-center bg-neutral-900/50 hidden">
-		<button id="close-tilemap" class="uppercase text-white font-bold px-5 py-1 bg-neutral-800 rounded hover:bg-neutral-900">Fechar</button>
+		<button id="close-tilemap" class="uppercase cursor-pointer text-white font-bold px-5 py-1 bg-neutral-800 rounded hover:bg-neutral-900">Fechar</button>
 		<canvas id="tilemap-display" class="border border-white mt-5 bg-neutral-900 rounded"></canvas>
 	</div>
 
