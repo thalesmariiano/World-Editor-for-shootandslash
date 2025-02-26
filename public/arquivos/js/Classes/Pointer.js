@@ -27,6 +27,10 @@ class Pointer {
             x: 0,
             y: 0
         }
+        this.start = {
+            x: 0,
+			y: 0,
+        }
         this.color = 'white',
         this.size = {
             width: 50,

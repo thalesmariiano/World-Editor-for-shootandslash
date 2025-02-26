@@ -76,8 +76,8 @@ pointer.on('move', e => {
 
 pointer.on('mousedown', e => {
 	moveMapTrigger = true
-	map_editor.startX = e.clientX - map_editor.transX
-	map_editor.startY = e.clientY - map_editor.transY
+	pointer.startX = e.clientX - map_editor.transX
+	pointer.startY = e.clientY - map_editor.transY
 })
 
 pointer.on('mouseup', e => {
@@ -136,8 +136,8 @@ const removeTile = e => {
 
 const moveMap = e => {
 	if(moveMapTrigger){
-		map_editor.transX = e.clientX - map_editor.startX
-		map_editor.transY = e.clientY - map_editor.startY
+		map_editor.transX = e.clientX - pointer.startX
+		map_editor.transY = e.clientY - pointer.startY
 	}
 }
 
