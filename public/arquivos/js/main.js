@@ -21,7 +21,7 @@ const confirmDeleteMap = document.querySelector('#confirm-delete-map')
 
 confirmDeleteMap.addEventListener('click', () => {
 	deleteMapModal.classList.add('hidden')
-	editor.clearCanvas()
+	clearCanvas()
 })
 cancelDeleteMap.addEventListener('click', () => {
 	deleteMapModal.classList.add('hidden')
