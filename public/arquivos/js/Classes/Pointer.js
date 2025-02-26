@@ -49,13 +49,13 @@ class Pointer {
     
     getPointerX(e){
         return roundTo(
-            e.clientX - this.element.offsetLeft - this.size.width/2 - map_editor.transX,
+            e.clientX - this.size.width/2 - map_editor.transX,
             this.size.width
         )
     }
     getPointerY(e){
         return roundTo(
-            e.clientY - this.element.offsetTop - this.size.height/2 - map_editor.transY,
+            e.clientY - this.size.height/2 - map_editor.transY,
             this.size.width
         )
     }
