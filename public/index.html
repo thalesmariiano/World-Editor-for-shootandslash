@@ -61,13 +61,13 @@
 			</div>
 			<div class="w-16 h-full flex flex-col justify-between items-center py-2">
 				<div class="flex flex-col items-center gap-y-2">
-					<button onclick="editor.switchMode('addTile')" class="p-2 cursor-pointer bg-green-800 hover:bg-green-950 rounded">
+					<button onclick="switchMode('add_tile')" class="p-2 cursor-pointer bg-green-800 hover:bg-green-950 rounded">
 						<img class="w-7" src="static/images/add-icon.svg" alt="add icon">
 					</button>
-					<button onclick="editor.switchMode('removeTile')" class="p-2 cursor-pointer bg-red-800 hover:bg-red-950 rounded">
+					<button onclick="switchMode('remove_tile')" class="p-2 cursor-pointer bg-red-800 hover:bg-red-950 rounded">
 						<img class="w-7" src="static/images/remove-icon.svg" alt="remove icon">
 					</button>
-					<button onClick="editor.moveMap()" class="p-2 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+					<button onClick="switchMode('move_map')" class="p-2 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 						<img class="w-7" src="static/images/move-icon.svg" alt="move icon">
 					</button>
 					<button id="open-tilemap" class="p-2 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
@@ -101,31 +101,31 @@
 			<img class="min-w-14 w-14" src="static/images/tiles_icon_128x.png" alt="tile left side icon">
 		</label>
 		<div class="w-full h-full flex items-center gap-x-2 px-2">
-			<button onClick="editor.switchTexture(0,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(0,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_1.png" alt="tile left side icon">
 			</button>
-			<button onClick="editor.switchTexture(32,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(32,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_2.png" alt="tile middle icon">
 			</button>
-			<button onClick="editor.switchTexture(64,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(64,0)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_3.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(0,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(0,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_4.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(32,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(32,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_5.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(64,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(64,32)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_6.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(0,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(0,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_7.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(32,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(32,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_8.png" alt="tile right side icon">
 			</button>
-			<button onClick="editor.switchTexture(64,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
+			<button onClick="switchTexture(64,64)" class="p-1 cursor-pointer bg-neutral-800 hover:bg-neutral-950 rounded">
 				<img class="min-w-10 w-10" src="static/images/tile_9.png" alt="tile right side icon">
 			</button>
 		</div>
@@ -184,9 +184,26 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+	<script>
+		const map_editor = {
+			area: {
+				width: 2000,
+				height: 800
+			},
+			tiles: [],
+			transX: 0,
+			transY: 0,
+			startX: 0,
+			startY: 0,
+		}
+	</script>
+
+	<script src="static/js/engine.js"></script>
+	<script src="static/js/Classes/Pointer.js"></script>
 	<script src="static/js/utils.js"></script>
-	<script src="static/js/mapEditor.js"></script>
+
 	<script src="static/js/textureSelector.js"></script>
 	<script src="static/js/main.js"></script>
+	<script src="static/js/mapEditor.js"></script>
 </body>
 </html>

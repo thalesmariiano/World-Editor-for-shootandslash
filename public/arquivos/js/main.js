@@ -1,4 +1,7 @@
 
+const tilemap = new Image()
+tilemap.src = 'static/images/tilemap.png'
+
 const config = {
 	tileImgX: 0,
 	tileImgY: 0
@@ -39,13 +42,8 @@ closeOptions.addEventListener('click', () => {
 	optionsModal.classList.add('hidden')
 })
 
-
-const editor = mapEditor('#editor-display', 'static/images/tilemap.png')
-editor.init()	
-
 const selector = textureSelector('#tilemap-display', 'static/images/tilemap.png')
 selector.init()
-
 
 const saveMapModal = document.querySelector('#save-map-modal')
 const mapName = document.querySelector('#map-name')
