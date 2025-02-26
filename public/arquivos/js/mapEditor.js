@@ -15,6 +15,8 @@ engine.on('render', (BUFFER) => {
 	BUFFER.fillStyle = "#404040"
 	BUFFER.fillRect(0, 0, innerWidth, innerHeight)
 
+	BUFFER.scale(map_editor.scale, map_editor.scale)
+
 	BUFFER.translate(map_editor.transX, map_editor.transY)
 
 	// Editable area canvas background
@@ -82,6 +84,16 @@ pointer.on('mousedown', e => {
 
 pointer.on('mouseup', e => {
 	moveMapTrigger = false
+})
+
+pointer.element.addEventListener('wheel', e => {
+	if(e.wheelDelta > 0){
+		if(map_editor.scale >= 1) return
+		map_editor.scale += 0.05
+	}else{
+		if(map_editor.scale <= 0.3) return
+		map_editor.scale -= 0.05
+	}
 })
 
 const switchMode = mode => {
