@@ -112,3 +112,17 @@ replaceTile.addEventListener('click', () => {
 if(parseInt(localStorage.getItem('replaceTile'))){
 	replaceTile.checked = true
 }
+
+const mapWidthInput = document.querySelector('#map_width_input')
+const mapHeightInput = document.querySelector('#map_height_input')
+
+mapWidthInput.value = map_editor.area.width
+mapHeightInput.value = map_editor.area.height
+
+window.addEventListener('keydown', (e) => {
+	if(e.key === 'Enter'){
+		if(optionsModal.classList.contains('hidden')) return
+		map_editor.area.width = mapWidthInput.value
+		map_editor.area.height = mapHeightInput.value
+	}
+})
