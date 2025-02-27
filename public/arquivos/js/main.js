@@ -62,11 +62,19 @@ saveMap.addEventListener('click', () => {
 confirmSaveMap.addEventListener('click', () => {
 	saveMapModal.classList.add('hidden')
 	savingMap.classList.remove('hidden')
+	const name = mapName.value ? mapName.value : mapName.placeholder
 
 	const data = {
-		map_name: mapName.value ? mapName.value : mapName.placeholder,
 		file_extension: fileExtension.value,
-		tileMap: editor.tiles
+		map: {
+			name: name,
+			size: {
+				width: map_editor.area.width,
+				height: map_editor.area.height
+			},
+			save_date: new Date(),
+			tiles: map_editor.tiles
+		}
 	}
 
 	axios.post('http://localhost:3072/', data)

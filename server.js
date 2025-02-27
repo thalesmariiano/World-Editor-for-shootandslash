@@ -21,9 +21,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-	if(req.body.tileMap.length){
-		const fileName = req.body.map_name
-		const fileContent = JSON.stringify(req.body.tileMap)
+	if(req.body.map.tiles.length){
+		const fileName = req.body.map.name
+		const fileContent = JSON.stringify(req.body.map)
 		const fileExtension = req.body.file_extension
 		const filePath = `tiles/${fileName}.${fileExtension}`
 
